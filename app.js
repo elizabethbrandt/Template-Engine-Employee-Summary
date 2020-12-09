@@ -12,7 +12,42 @@ const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
+// const questions = [
+
+//     {
+//         name: 'title',
+//         type: 'input',
+//         message: 'What is the title of the project?'
+//     },
+//     {
+//         name: 'description',
+//         type: 'input',
+//         message: 'What is the description of the project?'
+//     },
+//     {
+//         name: 'installation',
+//         type: 'input',
+//         message: 'What are the steps required to install the project?',
+//     },
+//     {
+//         name: 'usage',
+//         type: 'input',
+//         message: 'What are the instructions and/or examples for the use of the project?',
+//     },
+//     {
+//         name: 'license',
+//         type: 'list',
+//         message: 'What license did you use for the project?',
+//         choices: ['Apache License 2.0', 'Boost Software License 1.0', 'GNU General Public License 2.0', 'MIT License', 'Mozilla Public License', 'The Unlicense']
+//     },
+
+// ];
 // and to create objects for each team member (using the correct classes as blueprints!)
+const karen = new Manager('Karen', 101, 'karen@test.com', '555-555-5555');
+
+// console.log(karen);
+karen.getRole();
+karen.getOfficeNumber();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
