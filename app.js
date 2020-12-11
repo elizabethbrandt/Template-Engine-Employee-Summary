@@ -12,48 +12,6 @@ const render = require("./lib/htmlRenderer");
 const employeeList = [];
 
 // Write code to use inquirer to gather information about the development team members,
-// inquirer
-//     .prompt([
-//         {
-//             name: 'name',
-//             type: 'input',
-//             message: 'What is the name of the employee?'
-//         },
-//         {
-//             name: 'id',
-//             type: 'input',
-//             message: 'What is their employee ID?'
-//         },
-//         {
-//             name: 'email',
-//             type: 'input',
-//             message: 'What is their email?',
-//         },
-//         {
-//             name: 'role',
-//             type: 'list',
-//             message: 'What is their role?',
-//             choices: ['Engineer', 'Intern', 'Manager']
-//         },
-
-//     ])
-
-// .then((answers) => {
-
-//         if (answers.role === 'Engineer') {
-
-//             engineerQuestion();
-
-//         } else if (answers.role === 'Intern') {
-
-//             internQuestion();
-
-//         } else if (answers.role === 'Manager') {
-
-//             managerQuestion();
-
-//         }
-// })
 
 const questions = [
     {
@@ -130,7 +88,7 @@ function engineerQuestion(answers) {
 
 }
 
-function internQuestion() {
+function internQuestion(answers) {
 
     inquirer
         .prompt(
@@ -140,9 +98,9 @@ function internQuestion() {
                 message: 'What school are they attending?',
             })
 
-        .then((answers) => {
+        .then((internAnswers) => {
 
-            const intern = new Intern(answers.name, answers.id, answers.email, answers.officeNumber);
+            const intern = new Intern(answers.name, answers.id, answers.email, internAnswers.school);
 
             employeeList.push(intern);
 
@@ -152,7 +110,7 @@ function internQuestion() {
 
 }
 
-function managerQuestion() {
+function managerQuestion(answers) {
 
     inquirer
         .prompt(
@@ -162,9 +120,9 @@ function managerQuestion() {
                 message: 'What is their office number?',
             })
 
-        .then((answers) => {
+        .then((managerAnswers) => {
 
-            const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            const manager = new Manager(answers.name, answers.id, answers.email, managerAnswers.officeNumber);
 
             employeeList.push(manager);
 
@@ -174,7 +132,6 @@ function managerQuestion() {
 
 }
 // and to create objects for each team member (using the correct classes as blueprints!)
-const karen = new Manager('Karen', 101, 'karen@test.com', '555-555-5555');
 
 // console.log(karen);
 karen.getRole();
