@@ -12,112 +12,165 @@ const render = require("./lib/htmlRenderer");
 const employeeList = [];
 
 // Write code to use inquirer to gather information about the development team members,
-inquirer
-    .prompt([
-        {
-            name: 'name',
-            type: 'input',
-            message: 'What is the name of the employee?'
-        },
-        {
-            name: 'id',
-            type: 'input',
-            message: 'What is their employee ID?'
-        },
-        {
-            name: 'email',
-            type: 'input',
-            message: 'What is their email?',
-        },
-        {
-            name: 'role',
-            type: 'list',
-            message: 'What is their role?',
-            choices: ['Engineer', 'Intern', 'Manager']
-        },
+// inquirer
+//     .prompt([
+//         {
+//             name: 'name',
+//             type: 'input',
+//             message: 'What is the name of the employee?'
+//         },
+//         {
+//             name: 'id',
+//             type: 'input',
+//             message: 'What is their employee ID?'
+//         },
+//         {
+//             name: 'email',
+//             type: 'input',
+//             message: 'What is their email?',
+//         },
+//         {
+//             name: 'role',
+//             type: 'list',
+//             message: 'What is their role?',
+//             choices: ['Engineer', 'Intern', 'Manager']
+//         },
 
-    ])
+//     ])
 
-.then((answers) => {
+// .then((answers) => {
 
-        if (answers.role === 'Engineer') {
+//         if (answers.role === 'Engineer') {
 
-            engineerQuestion();
-        
-        } else if (answers.role === 'Intern') {
+//             engineerQuestion();
 
-            internQuestion();
-        
-        } else if (answers.role === 'Manager') {
+//         } else if (answers.role === 'Intern') {
 
-            managerQuestion();
+//             internQuestion();
 
-        }
-})
+//         } else if (answers.role === 'Manager') {
 
-function engineerQuestion() {
+//             managerQuestion();
+
+//         }
+// })
+
+const questions = [
+    {
+        name: 'name',
+        type: 'input',
+        message: 'What is the name of the employee?'
+    },
+    {
+        name: 'id',
+        type: 'input',
+        message: 'What is their employee ID?'
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: 'What is their email?',
+    },
+    {
+        name: 'role',
+        type: 'list',
+        message: 'What is their role?',
+        choices: ['Engineer', 'Intern', 'Manager']
+    },
+
+]
+
+function init() {
 
     inquirer
-    .prompt(
-        {
-            name: 'github',
-            type: 'input',
-            message: 'What is their GitHub username?',
+        .prompt(questions)
+
+        .then((answers) => {
+
+            if (answers.role === 'Engineer') {
+
+                engineerQuestion(answers);
+
+            } else if (answers.role === 'Intern') {
+
+                internQuestion(answers);
+
+            } else if (answers.role === 'Manager') {
+
+                managerQuestion(answers);
+
+            }
+
         })
 
-    .then((answers) => {
-    
-        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-    
-        employeeList.push(engineer);
-    
-        console.log(employeeList);
-    
-    })
+}
+
+init()
+
+
+function engineerQuestion(answers) {
+
+    inquirer
+        .prompt(
+            {
+                name: 'github',
+                type: 'input',
+                message: 'What is their GitHub username?',
+            })
+
+        .then((engineerAnswers) => {
+
+            const engineer = new Engineer(answers.name, answers.id, answers.email, engineerAnswers.github);
+
+            employeeList.push(engineer);
+
+            console.log(employeeList);
+
+        })
 
 }
 
 function internQuestion() {
 
     inquirer
-    .prompt(
-        {
-            name: 'school',
-            type: 'input',
-            message: 'What school are they attending?',
-        })
+        .prompt(
+            {
+                name: 'school',
+                type: 'input',
+                message: 'What school are they attending?',
+            })
 
-    .then((answers) => {
-    
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.officeNumber);
-    
-        employeeList.push(intern);
-    
-        console.log(employeeList);
-    
-    })
+        .then((answers) => {
+
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.officeNumber);
+
+            employeeList.push(intern);
+
+            console.log(employeeList);
+
+        })
 
 }
 
 function managerQuestion() {
 
     inquirer
-    .prompt(
-    {
-        name: 'officeNumber',
-        type: 'input',
-        message: 'What is their office number?',
-    })
+        .prompt(
+            {
+                name: 'officeNumber',
+                type: 'input',
+                message: 'What is their office number?',
+            })
 
-    .then((answers) => {
-        
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        .then((answers) => {
 
-        employeeList.push(manager);
+            const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
 
-        console.log(employeeList);
+            employeeList.push(manager);
 
-    })
+            console.log(employeeList);
+
+        })
 
 }
 // and to create objects for each team member (using the correct classes as blueprints!)
