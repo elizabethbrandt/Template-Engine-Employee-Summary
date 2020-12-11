@@ -9,39 +9,117 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
+const employeeList = [];
 
 // Write code to use inquirer to gather information about the development team members,
-// const questions = [
+inquirer
+    .prompt([
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the name of the employee?'
+        },
+        {
+            name: 'id',
+            type: 'input',
+            message: 'What is their employee ID?'
+        },
+        {
+            name: 'email',
+            type: 'input',
+            message: 'What is their email?',
+        },
+        {
+            name: 'role',
+            type: 'list',
+            message: 'What is their role?',
+            choices: ['Engineer', 'Intern', 'Manager']
+        },
 
-//     {
-//         name: 'title',
-//         type: 'input',
-//         message: 'What is the title of the project?'
-//     },
-//     {
-//         name: 'description',
-//         type: 'input',
-//         message: 'What is the description of the project?'
-//     },
-//     {
-//         name: 'installation',
-//         type: 'input',
-//         message: 'What are the steps required to install the project?',
-//     },
-//     {
-//         name: 'usage',
-//         type: 'input',
-//         message: 'What are the instructions and/or examples for the use of the project?',
-//     },
-//     {
-//         name: 'license',
-//         type: 'list',
-//         message: 'What license did you use for the project?',
-//         choices: ['Apache License 2.0', 'Boost Software License 1.0', 'GNU General Public License 2.0', 'MIT License', 'Mozilla Public License', 'The Unlicense']
-//     },
+    ])
 
-// ];
+.then((answers) => {
+
+        if (answers.role === 'Engineer') {
+
+            engineerQuestion();
+        
+        } else if (answers.role === 'Intern') {
+
+            internQuestion();
+        
+        } else if (answers.role === 'Manager') {
+
+            managerQuestion();
+
+        }
+})
+
+function engineerQuestion() {
+
+    inquirer
+    .prompt(
+        {
+            name: 'github',
+            type: 'input',
+            message: 'What is their GitHub username?',
+        })
+
+    .then((answers) => {
+    
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+    
+        employeeList.push(engineer);
+    
+        console.log(employeeList);
+    
+    })
+
+}
+
+function internQuestion() {
+
+    inquirer
+    .prompt(
+        {
+            name: 'school',
+            type: 'input',
+            message: 'What school are they attending?',
+        })
+
+    .then((answers) => {
+    
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.officeNumber);
+    
+        employeeList.push(intern);
+    
+        console.log(employeeList);
+    
+    })
+
+}
+
+function managerQuestion() {
+
+    inquirer
+    .prompt(
+    {
+        name: 'officeNumber',
+        type: 'input',
+        message: 'What is their office number?',
+    })
+
+    .then((answers) => {
+        
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+
+        employeeList.push(manager);
+
+        console.log(employeeList);
+
+    })
+
+}
 // and to create objects for each team member (using the correct classes as blueprints!)
 const karen = new Manager('Karen', 101, 'karen@test.com', '555-555-5555');
 
