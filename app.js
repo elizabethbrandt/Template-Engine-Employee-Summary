@@ -71,15 +71,15 @@ function init() {
 
             if (answers.role === 'Engineer') {
 
-                engineerQuestion(answers);
+                newEngineer(answers);
 
             } else if (answers.role === 'Intern') {
 
-                internQuestion(answers);
+                newIntern(answers);
 
             } else if (answers.role === 'Manager') {
 
-                managerQuestion(answers);
+                newManager(answers);
 
             }
 
@@ -92,7 +92,7 @@ function init() {
 init()
 
 
-function engineerQuestion(answers) {
+function newEngineer(answers) {
 
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
 
@@ -102,7 +102,7 @@ function engineerQuestion(answers) {
 
 }
 
-function internQuestion(answers) {
+function newIntern(answers) {
 
     const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
 
@@ -112,7 +112,7 @@ function internQuestion(answers) {
 
 }
 
-function managerQuestion(answers) {
+function newManager(answers) {
 
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
 
