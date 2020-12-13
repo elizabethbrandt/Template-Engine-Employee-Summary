@@ -99,8 +99,6 @@ function newEngineer(answers) {
 
     employeeList.push(engineer);
 
-    console.log(employeeList);
-
 }
 
 function newIntern(answers) {
@@ -109,8 +107,6 @@ function newIntern(answers) {
 
     employeeList.push(intern);
 
-    console.log(employeeList);
-
 }
 
 function newManager(answers) {
@@ -118,8 +114,6 @@ function newManager(answers) {
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
 
     employeeList.push(manager);
-
-    console.log(employeeList);
 
 }
 
@@ -154,14 +148,14 @@ function addAnotherEmployee() {
 
 // After you have your html, you're now ready to create an HTML file using the HTML returned from the `render` function. Now write it to a file named `team.html` in the `output` folder. You can use the variable `outputPath` above target this location.
 
-// function createHtml(employeeList) {
+function createHtml() {
 
-//     const employeeHtml = render(employeeList);
+    const employeeHtml = render(employeeList);
 
-//     fs.writeFile(outputPath, employeeHtml, (err) => {
+    fs.writeFile(outputPath, employeeHtml, (err) => {
 
-//         if(err) console.log(err);
+        if(err) console.log(err);
 
-//     })
+    })
 
-// }
+}
