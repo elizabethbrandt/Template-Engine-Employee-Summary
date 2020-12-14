@@ -28,7 +28,9 @@ The purpose of this project is to create an application that will allow the user
 * T
 
 
-<!-- ![screenshot-of-code](assets/files-and-terminal.png) -->
+![screenshot-of-class-extensions](assets/images/class-extensions.png)
+
+![screenshot-of-functioning-application](assets/images/inquirer-app-and-html.png)
 
 ## Learning Outcomes
 
