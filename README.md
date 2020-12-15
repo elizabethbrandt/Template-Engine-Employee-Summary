@@ -53,6 +53,17 @@ Next is a screnshot of the functioning code that displays the questions that are
 * Being able to use the "when" property made it incredibly easy to be able to ask conditional questions based on the user's answers. I struggled to use it properly at first - my syntax was slightly off - so I abandoned the use of it at first and went down a different path. However, I came back to it again and was able to keep my code more DRY and deleted several lines of code just by getting that syntax correct. 
 
 
+## Screenshots of deployed site
+
+Desktop variation
+
+![desktop](assets/images/desktop.png)
+
+Adapted for mobile
+
+![mobile](assets/images/mobile.png)
+
+
 ## Conclusion
 
 In conclusion, I actually really enjoyed doing this assignment! Though there were pieces of the pre-built code I couldn't have done myself, like the unit tests and the htmlrenderer.js files, I was able to understand how all of the pieces came together. 
